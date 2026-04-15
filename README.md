@@ -76,7 +76,7 @@ required for segmenting the event data. Users can add more sparql queries to 'By
 <a name="usage"></a>
 ## 3. Instructions to generate the data
 
-Requirements: The user must have *java 1.7 and maven* installed in the system. 
+Requirements: The user must have *java 11 and maven* installed in the system. 
 
 <a name="edgexe"></a>
 ## 3.1. Event Data Generation (Direct execution using executable jar)
