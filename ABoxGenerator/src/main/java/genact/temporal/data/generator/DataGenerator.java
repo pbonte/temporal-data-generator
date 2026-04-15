@@ -34,91 +34,112 @@ import java.util.*;
 public class DataGenerator {
 
 	// Configuration parameters
-	int acceptedPaperCount_min;
-	int acceptedPaperCount_max;
-	int acceptedPaperCount;
-	int peopleDirectlyInvolved_min;
-	int peopleDirectlyInvolved_max;
-	int peopleDirectlyInvolved;
-	int otherPeopleInvolved_min;
-	int otherPeopleInvolved_max;
-	int otherPeopleInvolved;
-	int usersInvolved_min;
-	int usersInvolved_max;
-	int usersInvolved;
-	int organizationCount_min;
-	int acadOrganizationCount_min;
-	int acadOrganizationCount_max;
-	int acadOrganizationCount;
-	int nonAcadOrganizationCount_min;
-	int nonAcadOrganizationCount_max;
-	int nonAcadOrganizationCount;
-	int researchGroupCount_min;
-	int researchGroupCount_max;
-	int researchGroupCount;
-	int collegeCount_min;
-	int collegeCount_max;
-	int collegeCount;
-	int conferenceDuration_min_months;
-	int conferenceDuration_max_months;
-	int conferenceDuration_months;
-	int nextConferenceCycleStartsIn_min;
-	int nextConferenceCycleStartsIn_max;
-	int nextConferenceCycleStartsIn;
-	int cityCount_min;
-	int cityCount_max;
-	int cityCount;
-	int early_announcement_peak_min;
-	int early_announcement_peak_max;
-	int notification_peak_min;
-	int notification_peak_max;
-	int during_conference_peak_min;
-	int during_conference_peak_max;
-	int after_conference_peak_min;
-	int after_conference_peak_max;
-	int during_conference_days_max;
-	int during_conference_days_min;
-	int after_conference_days_max;
-	int after_conference_days_min;
-	int random_tweets_min;
-	int random_tweets_max;
-	List<String> researchGroups = new ArrayList<>();
-	List<String> cities = new ArrayList<>();
-	Map<String, Map<String, Object>> papers;
-	File streamsDirectory;
+	public int acceptedPaperCount_min;
+	public int acceptedPaperCount_max;
+	public int acceptedPaperCount;
+	public int peopleDirectlyInvolved_min;
+	public int peopleDirectlyInvolved_max;
+	public int peopleDirectlyInvolved;
+	public int otherPeopleInvolved_min;
+	public int otherPeopleInvolved_max;
+	public int otherPeopleInvolved;
+	public int usersInvolved_min;
+	public int usersInvolved_max;
+	public int usersInvolved;
+	public int organizationCount_min;
+	public int acadOrganizationCount_min;
+	public int acadOrganizationCount_max;
+	public int acadOrganizationCount;
+	public int nonAcadOrganizationCount_min;
+	public int nonAcadOrganizationCount_max;
+	public int nonAcadOrganizationCount;
+	public int researchGroupCount_min;
+	public int researchGroupCount_max;
+	public int researchGroupCount;
+	public int collegeCount_min;
+	public int collegeCount_max;
+	public int collegeCount;
+	public int conferenceDuration_min_months;
+	public int conferenceDuration_max_months;
+	public int conferenceDuration_months;
+	public int nextConferenceCycleStartsIn_min;
+	public int nextConferenceCycleStartsIn_max;
+	public int nextConferenceCycleStartsIn;
+	public int cityCount_min;
+	public int cityCount_max;
+	public int cityCount;
+	public int early_announcement_peak_min;
+	public int early_announcement_peak_max;
+	public int notification_peak_min;
+	public int notification_peak_max;
+	public int during_conference_peak_min;
+	public int during_conference_peak_max;
+	public int after_conference_peak_min;
+	public int after_conference_peak_max;
+	public int during_conference_days_max;
+	public int during_conference_days_min;
+	public int after_conference_days_max;
+	public int after_conference_days_min;
+	public int random_tweets_min;
+	public int random_tweets_max;
+	public List<String> researchGroups = new ArrayList<>();
+	public List<String> cities = new ArrayList<>();
+	public Map<String, Map<String, Object>> papers;
+	public File streamsDirectory;
 	// Partition partition;
-	Map<String, Map<String, String>> userData;
-	Map<String, Map<String, Object>> paperData;
+	public Map<String, Map<String, String>> userData;
+	public Map<String, Map<String, Object>> paperData;
 	// these are the instances that have been defined in the ontologies
-	String[] TOKEN_ConferenceEventTrack = new String[] { "applicationsTrack", "demoTrack", "doctoralConsortiumTrack",
+	public String[] TOKEN_ConferenceEventTrack = new String[] { "applicationsTrack", "demoTrack", "doctoralConsortiumTrack",
 			"posterTrack", "researchTrack", "resourcesTrack", "tutorialTrack", "workshopTrack" };
-	String[] TOKEN_EventMode = new String[] { "online", "offline", "hybrid" };
-	String[] TOKEN_ChairRole = new String[] { "generalChair", "localChair", "researchTrackChair", "resourcesTrackChair",
+	public String[] TOKEN_EventMode = new String[] { "online", "offline", "hybrid" };
+	public String[] TOKEN_ChairRole = new String[] { "generalChair", "localChair", "researchTrackChair", "resourcesTrackChair",
 			"trackChair", "tutorialTrackChair", "workshopTrackChair" };
-	String[] TOKEN_Domain = new String[] { "ai", "ml", "nlp", "aiForSocialGood", "artificialIntelligence", "bigData",
+	public String[] TOKEN_Domain = new String[] { "ai", "ml", "nlp", "aiForSocialGood", "artificialIntelligence", "bigData",
 			"blockchain", "cloudComputing", "computerVision", "dataScience", "deepLearning", "internetOfThings",
 			"knowledgeGraph", "cardiology", "neurology", "oncology", "pediatrics", "linkedData", "machineLearning",
 			"ontology", "naturalLanguageProcessing", "bioTech", "quantumComputing", "semanticWeb" };
-	String[] TOKEN_EventPhases = new String[] {};
+	public String[] TOKEN_EventPhases = new String[] {};
 
-	int confNum; // user specifies the number of conferences required such as if user wants 4:
+	public int confNum; // user specifies the number of conferences required such as if user wants 4:
 					// ESWC, ISWC, AAAI, WWW.
-	int confCycle; // user specifies the number of conference cycles needed such as ESWC21. ESWC22,
+	public int confCycle; // user specifies the number of conference cycles needed such as ESWC21. ESWC22,
 					// ESWC23...
-	File staticDirectory;
-	String profile;
-	String confInstance;
-	String directoryPath;
-	ConferenceStreams[] conferences;
-	Random random = new Random();
-	HashMap<Integer, String> map1 = new HashMap<>();
-	HashMap<Integer, String> map2 = new HashMap<>();
-	HashMap<Integer, String> map3 = new HashMap<>();
-	LocalDateTime dateTime;
-	long startTimestampMillis;
-	List<String> usersList;
+	public File staticDirectory;
+	public String profile;
+	public String confInstance;
+	public String directoryPath;
+	public ConferenceStreams[] conferences;
+	public Random random = new Random();
+	public HashMap<Integer, String> map1 = new HashMap<>();
+	public HashMap<Integer, String> map2 = new HashMap<>();
+	public HashMap<Integer, String> map3 = new HashMap<>();
+	public LocalDateTime dateTime;
+	public long startTimestampMillis;
+	public List<String> usersList;
+
+	// Lists used by ConferenceStreams2 and ConferenceData
+	public List<String> papersList = new ArrayList<>();
+	public List<String> cityList = new ArrayList<>();
+	public List<String> otherPeopleInvolvedList = new ArrayList<>();
+	public List<String> peopleDirectlyInvolvedList = new ArrayList<>();
+	public List<String> colleges = new ArrayList<>();
+	public List<String> academicOrganizations = new ArrayList<>();
+	public List<String> nonAcademicOrganizations = new ArrayList<>();
 
 	public DataGenerator() {
+	}
+
+	public void classAssertion(String concept, String instance) {
+		// Stub: class assertion for static RDF data
+	}
+
+	public void objectPropertyAssertion(String subject, String predicate, String object) {
+		// Stub: object property assertion for static RDF data
+	}
+
+	public void dataPropertyAssertion(String subject, String predicate, String object) {
+		// Stub: data property assertion for static RDF data
 	}
 
 	public static void main(String[] args) throws IOException {

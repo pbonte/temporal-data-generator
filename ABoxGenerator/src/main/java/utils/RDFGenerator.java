@@ -1,4 +1,6 @@
 package utils;
+
+import genact.temporal.data.generator.DataGenerator;
 import org.yaml.snakeyaml.Yaml;
 import java.io.InputStream;
 import java.util.List;

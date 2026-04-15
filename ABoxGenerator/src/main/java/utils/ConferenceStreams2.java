@@ -4,6 +4,7 @@
 
 package utils;
 
+import genact.temporal.data.generator.DataGenerator;
 import org.apache.jena.query.ARQ;import java.util.UUID;
 import org.apache.jena.rdf.model.*;
 import java.util.ArrayList;
@@ -27,7 +28,6 @@ import java.util.Map;
 import java.util.Properties;
 import org.yaml.snakeyaml.Yaml;
 import org.apache.jena.riot.RDFDataMgr;
-import org.apache.jena.riot.RDFWriterBuilder;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.*;
 import java.util.UUID;
